@@ -26,6 +26,20 @@ app.get("/", function(req, res) {
   });
 });
 
+app.get("/posts/:postName", function(req, res) {
+  const requestedTitle = req.params.postName;
+
+  posts.forEach(function(post) {
+    const storedTitle = post.title;
+
+    if (storedTitle === requestedTitle) {
+      console.log("Match found!");
+    } else {
+      console.log("Match NOT found!");
+    }
+  });
+});
+
 app.get("/about", function(req, res) {
   res.render("about", {aboutText: aboutContent});
 });
